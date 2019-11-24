@@ -6,7 +6,7 @@ pipeline {
         stage('Compile') {
             steps {
                 echo "Compiling..."
-                sh "sbt compile"
+               sh "/usr/local/bin/sbt compile"
             }
         }
 
