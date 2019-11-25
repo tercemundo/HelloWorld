@@ -1,13 +1,12 @@
 pipeline {
     agent any
-
-    stages {        
-                def sbtHome = tool 'sbt-0.13.15'
+    def sbtHome = tool 'sbt-0.13.15'
   def sbt = "${sbtHome}/bin/sbt -no-colors -batch"
+
+    stages {       
   stage('build') {
     sh "${sbt} clean compile"
-            }
-        }
+  }
 
         stage('Test') {
             steps {
