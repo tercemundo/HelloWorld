@@ -1,20 +1,20 @@
 pipeline {
     agent any
  stages {       
-         stage('build') {
+         stage('Compile') {
              steps{
          sh "sbt clean compile"
              }
       }
 
-        stage('Test') {
+        stage('Run') {
             steps {
                 echo "Testing..."
                 sh "sbt run"
             }
         }
 
-        stage('Package') {
+        stage('Test') {
             steps {
                 echo "Packaging..."
                 sh "sbt test"
