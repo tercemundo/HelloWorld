@@ -31,8 +31,8 @@ pipeline {
          stage('Dockerize'){
                     steps{
                        echo "Dockerize..."
-                       sh "sudo docker build -t HelloWorld ."
-                       sh "sudo docker run HelloWorld"
+                       sh "sudo docker build -t hello-world ."
+                       sh "sudo docker run hello-world"
                     }
                 }
 
