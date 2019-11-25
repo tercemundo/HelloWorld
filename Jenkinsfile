@@ -24,7 +24,7 @@ pipeline {
         stage('Package'){
             steps{
                echo "Packaging..."
-               sh "sbt assembly"
+               sh "sbt package"
             }
         }
 
