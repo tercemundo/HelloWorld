@@ -4,9 +4,11 @@ pipeline {
   def sbt = "${sbtHome}/bin/sbt -no-colors -batch"
 
     stages {       
-  stage('build') {
-    sh "${sbt} clean compile"
-  }
+         stage('build') {
+             steps{
+         sh "${sbt} clean compile"
+             }
+      }
 
         stage('Test') {
             steps {
