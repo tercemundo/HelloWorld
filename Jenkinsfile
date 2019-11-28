@@ -25,20 +25,22 @@ pipeline {
             steps{
                echo "Packaging..."
                sh "sbt package"
+
             }
         }
 
         stage('sanity check'){
             steps{
              input("does the project  is ready to deploy ?")
+
             }
         }
 
          stage('Dockerize'){
                     steps{
                        echo "Dockerize..."
-                       sh "sudo docker build -t HelloWorld ."
-                       sh "sudo docker run HelloWorld"
+                       sh "sudo docker build -t hello-world ."
+                       sh "sudo docker run hello-world"
                     }
                 }
 
