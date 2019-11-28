@@ -24,7 +24,13 @@ pipeline {
         stage('Package'){
             steps{
                echo "Packaging..."
-               sh "sbt assembly"
+               sh "sbt package"
+            }
+        }
+
+        stage('sanity check'){
+            steps{
+             input("does the project  is ready to deploy ?")
             }
         }
 
