@@ -36,13 +36,12 @@ pipeline {
             }
         }
 
-         stage('Dockerize'){
-                    steps{
-                       echo "Dockerize..."
-                       sh "sudo docker build -t hello-world ."
-                       sh "sudo docker run hello-world"
-                    }
-                }
+        stage('Build Status'){
+            steps{
+             echo "Here you pipeline is get successfully executed"
+
+            }
+        }
 
     }
 }
