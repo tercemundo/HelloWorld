@@ -11,21 +11,24 @@ pipeline {
         stage('Run') {
             steps {
                 echo "Running..."
-                sh "sbt run"
+                sh "${tool name: '', type: 'org.jvnet.hudson.plugins.SbtPluginBuilder$SbtInstallation'}/bin/sbt run"
+
             }
         }
 
         stage('Test') {
             steps {
                 echo "Testing..."
-                sh "sbt test"
+                sh "${tool name: '', type: 'org.jvnet.hudson.plugins.SbtPluginBuilder$SbtInstallation'}/bin/sbt test"
+
             }
         }
 
         stage('Package'){
             steps{
                echo "Packaging..."
-               sh "sbt package"
+               sh "${tool name: '', type: 'org.jvnet.hudson.plugins.SbtPluginBuilder$SbtInstallation'}/bin/sbt package"
+
 
             }
         }
