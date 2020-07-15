@@ -3,7 +3,7 @@ pipeline {
  stages {       
          stage('Compile') {
              steps{
-                         sh "${tool name: '', type: 'org.jvnet.hudson.plugins.SbtPluginBuilder$SbtInstallation'}/bin/sbt compile"
+                         sh "${tool name: '', type: 'org.jvnet.hudson.plugins.SbtPluginBuilder$SbtInstallation'}/usr/local/bin/sbt compile"
 
              }
       }
@@ -11,7 +11,7 @@ pipeline {
         stage('Run') {
             steps {
                 echo "Running..."
-                sh "${tool name: '', type: 'org.jvnet.hudson.plugins.SbtPluginBuilder$SbtInstallation'}/bin/sbt run"
+                sh "${tool name: '', type: 'org.jvnet.hudson.plugins.SbtPluginBuilder$SbtInstallation'}/usr/local/bin/sbt run"
 
             }
         }
@@ -19,7 +19,7 @@ pipeline {
         stage('Test') {
             steps {
                 echo "Testing..."
-                sh "${tool name: '', type: 'org.jvnet.hudson.plugins.SbtPluginBuilder$SbtInstallation'}/bin/sbt test"
+                sh "${tool name: '', type: 'org.jvnet.hudson.plugins.SbtPluginBuilder$SbtInstallation'}/usr/local/bin/sbt test"
 
             }
         }
@@ -27,7 +27,7 @@ pipeline {
         stage('Package'){
             steps{
                echo "Packaging..."
-               sh "${tool name: '', type: 'org.jvnet.hudson.plugins.SbtPluginBuilder$SbtInstallation'}/bin/sbt package"
+               sh "${tool name: '', type: 'org.jvnet.hudson.plugins.SbtPluginBuilder$SbtInstallation'}/usr/local/bin/sbt package"
 
 
             }
