@@ -3,7 +3,8 @@ pipeline {
  stages {       
          stage('Compile') {
              steps{
-         sh "sbt clean compile"
+                         sh "sbt compile"
+
              }
       }
 
@@ -11,6 +12,7 @@ pipeline {
             steps {
                 echo "Testing..."
                 sh "sbt test"
+
             }
         }
 
@@ -18,6 +20,7 @@ pipeline {
             steps{
                echo "Packaging..."
                sh "sbt package"
+
 
             }
         }   
