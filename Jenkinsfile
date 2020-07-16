@@ -6,8 +6,7 @@ pipeline {
          sh "sbt clean compile"
              }
       }
-
-        stage('Test') {
+         stage('Test') {
             steps {
                 echo "Testing..."
                 sh "sbt test"
@@ -18,13 +17,34 @@ pipeline {
             steps{
                echo "Packaging..."
                sh "sbt package"
+            }
+        }
+        stage('Build Docker Image'){
+            steps{
+               echo "Packaging..."
+               sh "docker build -t sakshigawande12/knolx-rest:2.0.0 ."
+            }
+        }
+        stage('Push Docker Image'){
+            steps{
+             withCredentials([string(credentialsId: 'dockerHubPwd', variable: 'dockerHubPwd')]) {
+                    sh "docker login -u sakshigawande12 -p ${dockerHubPwd} "
+                  }
+               sh "docker push sakshigawande12/knolx-rest:2.0.0"
+            }
+        }
+
+        stage('sanity check'){
+            steps{
+             input("does the project  is ready to deploy ?")
 
             }
-        }   
-        stage('Run') {
-            steps {
-                echo "Running..."
-                sh "sbt run"
+        }
+
+        stage('Build Status'){
+            steps{
+             echo "Here your pipeline is get successfully executed"
+
             }
         }
 
