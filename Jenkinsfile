@@ -24,8 +24,7 @@ pipeline {
         stage('Build Docker Image'){
             steps{
                echo "Packaging..."
-               
-                sh "docker build -t sakshigawande12/knolx-rest:2.0.0 ."
+               sh label: '', script: 'docker build -t sakshigawande12/knolx-rest:2.0.0 .'
             }
         }
         stage('Push Docker Image'){
