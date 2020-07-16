@@ -3,13 +3,15 @@ pipeline {
  stages {       
          stage('Compile') {
              steps{
-         sh "sbt clean compile"
+                         sh "sbt compile"
+
              }
       }
          stage('Test') {
             steps {
                 echo "Testing..."
                 sh "sbt test"
+
             }
         }
 
@@ -37,6 +39,7 @@ pipeline {
         stage('sanity check'){
             steps{
              input("does the project  is ready to deploy ?")
+
 
             }
         }
