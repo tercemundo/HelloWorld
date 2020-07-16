@@ -25,15 +25,15 @@ pipeline {
             steps{
                echo "Packaging..."
                
-                sh "${tool name: '', type: 'dockerTool'}/usr/bin docker build -t sakshigawande12/knolx-rest:2.0.0 ."
+                sh "${tool name: 'docker', type: 'dockerTool'}/usr/bin docker build -t sakshigawande12/knolx-rest:2.0.0 ."
             }
         }
         stage('Push Docker Image'){
             steps{
              withCredentials([string(credentialsId: 'dockerHubPwd', variable: 'dockerHubPwd')]) {
-                    sh "docker login -u sakshigawande12 -p ${dockerHubPwd} "
+                    sh "${tool name: 'docker', type: 'dockerTool'}/usr/bin docker login -u sakshigawande12 -p ${dockerHubPwd} "
                   }
-               sh "docker push sakshigawande12/knolx-rest:2.0.0"
+               sh "${tool name: 'docker', type: 'dockerTool'}/usr/bin docker push sakshigawande12/knolx-rest:2.0.0"
             }
         }
 
