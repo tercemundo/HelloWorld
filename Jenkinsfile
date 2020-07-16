@@ -25,7 +25,7 @@ pipeline {
             steps{
                echo "Packaging..."
                
-                sh "{ tool name: '', type: 'dockerTool'}/usr/bin docker build -t sakshigawande12/knolx-rest:2.0.0 ."
+                sh "docker build -t sakshigawande12/knolx-rest:2.0.0 ."
             }
         }
         stage('Push Docker Image'){
