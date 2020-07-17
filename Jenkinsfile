@@ -4,10 +4,10 @@ pipeline {
          stage('Compile') {
              steps{
                          sh "sbt compile"
-
              }
       }
-         stage('Test') {
+
+        stage('Test') {
             steps {
                 echo "Testing..."
                 sh "sbt test"
@@ -18,45 +18,24 @@ pipeline {
             steps{
                echo "Packaging..."
                sh "sbt package"
-            }
-        }
-        stage('Build Docker Image'){
-            steps{
-               echo "Packaging..."
-                sh "sudo docker build -t sakshigawande12/knolx-rest:2.0.0 ."
-            }
-        }
-        stage('Push Docker Image'){
-            steps{
-             withCredentials([string(credentialsId: 'dockerHubPwd', variable: 'dockerHubPwd')]) {
-                    sh "sudo docker login -u sakshigawande12 -p ${dockerHubPwd} "
-                  }
-               sh "sudo docker push sakshigawande12/knolx-rest:2.0.0"
-            }
-        }
 
-        stage('sanity check'){
-            steps{
-             input("does the project  is ready to deploy ?")
 
             }
         }
-
-        stage('Build Status'){
-            steps{
-             echo "Here your pipeline is get successfully executed"
-
         stage('Run') {
             steps {
                 echo "Running..."
                 sh "sbt run"
-
             }
         }
-     stage('Build status') {
+     
+     stage('B1') {
             steps {
-                githubNotify account: 'sakshigawande12', context: 'build-status', credentialsId: '5f3f4be6-94a3-4991-8515-d8936cc4f147', description: 'passed', gitApiUrl: '', repo: 'HelloWorld', sha: "${GIT_COMMIT}", status: 'SUCCESS', targetUrl: 'http://104.154.65.36:8080'
-            }
-     }
+     sh label: '', script: '''curl "https://api.GitHub.com/repos/sakshigawande12/HelloWorld/statuses/$GIT_COMMIT?access_token=e770bb9ff5a7a2a5125011b1915eb22f5531306a" \\
+  -H "Content-Type: application/json" \\
+  -X POST \\
+  -d "{\\"state\\": \\"success\\",\\"context\\": \\"continuous-integration/jenkins\\", \\"description\\": \\"Jenkins\\", \\"target_url\\": \\"http://104.154.65.36:8080/job/mul-2-hello/$BUILD_NUMBER/console\\"}"'''
     }
+   }
+ }
 }
