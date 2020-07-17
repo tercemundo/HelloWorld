@@ -11,7 +11,6 @@ pipeline {
             steps {
                 echo "Testing..."
                 sh "sbt test"
-
             }
         }
 
