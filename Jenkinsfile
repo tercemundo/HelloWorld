@@ -28,7 +28,11 @@ pipeline {
                 sh "sbt run"
             }
         }
-
+     stage('Run') {
+            steps {
+     githubNotify account: 'https://github.com/sakshigawande12', context: 'jenins-build-status', credentialsId: 'c5002016-bcdf-49aa-aa71-27616b6bd10a', description: 'BUILD-PASS', gitApiUrl: '', repo: 'https://github.com/sakshigawande12/HelloWorld', sha: '${GIT_COMMIT}', status: 'SUCCESS', targetUrl: ''
+            }
+     }
     }
 }
 
