@@ -31,7 +31,7 @@ pipeline {
      
      stage('B1') {
             steps {
-     sh label: '', script: '''curl "https://api.GitHub.com/repos/sakshigawande12/HelloWorld/statuses/$GIT_COMMIT?access_token=e770bb9ff5a7a2a5125011b1915eb22f5531306a" \\
+     sh label: '', script: '''curl "https://api.GitHub.com/repos/sakshigawande12/HelloWorld/statuses/$GIT_COMMIT?access_token=saksH@123" \\
   -H "Content-Type: application/json" \\
   -X POST \\
   -d "{\\"state\\": \\"success\\",\\"context\\": \\"continuous-integration/jenkins\\", \\"description\\": \\"Jenkins\\", \\"target_url\\": \\"http://104.154.65.36:8080/job/mul-2-hello/$BUILD_NUMBER/console\\"}"'''
