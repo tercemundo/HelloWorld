@@ -21,6 +21,12 @@ pipeline {
                sh "sbt package"
             }
         }
+        stage('Checkstyle'){
+            steps{
+               echo "Packaging..."
+               sh "sbt scalatyle"
+            }
+        }
         stage('Build Docker Image'){
             steps{
                echo "Packaging..."
