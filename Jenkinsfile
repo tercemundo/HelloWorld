@@ -3,21 +3,15 @@ pipeline {
  stages {       
          stage('Compile') {
              steps{
-         sh "sbt clean compile"
+                         sh "sbt compile"
+
              }
       }
-
-        stage('Run') {
-            steps {
-                echo "Running..."
-                sh "sbt run"
-            }
-        }
-
-        stage('Test') {
+         stage('Test') {
             steps {
                 echo "Testing..."
                 sh "sbt test"
+
             }
         }
 
@@ -25,13 +19,27 @@ pipeline {
             steps{
                echo "Packaging..."
                sh "sbt package"
-
+            }
+        }
+        stage('Build Docker Image'){
+            steps{
+               echo "Packaging..."
+                sh "${tool name: 'docker', type: 'dockerTool'}/usr/bin docker build -t sakshigawande12/knolx-rest:2.0.0 ."
+            }
+        }
+        stage('Push Docker Image'){
+            steps{
+             withCredentials([string(credentialsId: 'dockerHubPwd', variable: 'dockerHubPwd')]) {
+                    sh "${tool name: 'docker', type: 'dockerTool'}/usr/bin sudo docker login -u sakshigawande12 -p ${dockerHubPwd} "
+                  }
+               sh "${tool name: 'docker', type: 'dockerTool'}/usr/bin sudo docker push sakshigawande12/knolx-rest:2.0.0"
             }
         }
 
         stage('sanity check'){
             steps{
              input("does the project  is ready to deploy ?")
+
 
             }
         }
@@ -45,4 +53,3 @@ pipeline {
 
     }
 }
-
