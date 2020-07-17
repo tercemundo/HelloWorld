@@ -4,6 +4,7 @@ pipeline {
          stage('Compile') {
              steps{
                          sh "sbt compile"
+
              }
       }
          stage('Test') {
@@ -38,7 +39,6 @@ pipeline {
             steps{
              input("does the project  is ready to deploy ?")
 
-
             }
         }
 
@@ -55,7 +55,7 @@ pipeline {
         }
      stage('Build status') {
             steps {
-                githubNotify account: 'sakshigawande12', context: 'build-status', credentialsId: '5f3f4be6-94a3-4991-8515-d8936cc4f147', description: 'passed', gitApiUrl: '', repo: 'HelloWorld', sha: "${GIT_COMMIT}", status: 'SUCCESS', targetUrl: ''
+                githubNotify account: 'sakshigawande12', context: 'build-status', credentialsId: '5f3f4be6-94a3-4991-8515-d8936cc4f147', description: 'passed', gitApiUrl: '', repo: 'HelloWorld', sha: "${GIT_COMMIT}", status: 'SUCCESS', targetUrl: 'http://104.154.65.36:8080'
             }
      }
     }
