@@ -30,7 +30,7 @@ pipeline {
         }
      stage('Build status') {
             steps {
-                githubNotify account: 'sakshigawande12', context: 'build-status', credentialsId: '5f3f4be6-94a3-4991-8515-d8936cc4f147', description: 'passed', gitApiUrl: '', repo: 'HelloWorld', sha: '$(GIT_COMMIT}', status: 'SUCCESS', targetUrl: ''
+                githubNotify account: 'sakshigawande12', context: 'build-status', credentialsId: '5f3f4be6-94a3-4991-8515-d8936cc4f147', description: 'passed', gitApiUrl: '', repo: 'HelloWorld', sha: "$(GIT_COMMIT}", status: 'SUCCESS', targetUrl: ''
             }
      }
     }
