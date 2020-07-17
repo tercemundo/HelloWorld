@@ -30,7 +30,7 @@ pipeline {
         }
      stage('Build status') {
             steps {
-     githubNotify account: 'https://github.com/sakshigawande12', context: 'jenins-build-status', credentialsId: 'c5002016-bcdf-49aa-aa71-27616b6bd10a', description: 'BUILD-PASS', gitApiUrl: '', repo: 'https://github.com/sakshigawande12/HelloWorld', sha: '${GIT_COMMIT}', status: 'SUCCESS', targetUrl: ''
+                githubNotify account: 'https://github.com/sakshigawande12', context: 'build-status', credentialsId: '5f3f4be6-94a3-4991-8515-d8936cc4f147', description: 'passed', gitApiUrl: '', repo: 'https://github.com/sakshigawande12/HelloWorld', sha: '$(GIT_COMMIT}', status: 'SUCCESS', targetUrl: ''
             }
      }
     }
