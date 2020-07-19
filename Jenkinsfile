@@ -28,6 +28,7 @@ pipeline {
                 sh "sbt run"
             }
         }
+<<<<<<< HEAD
 
        stage('Deploy to test'){
     steps {
@@ -38,9 +39,21 @@ pipeline {
        } 
     }
      stage('Build status') {
+=======
+     
+     stage('B1') {
+>>>>>>> 94b18c893ad9cf80ed4c61bf35f7d754045c8021
             steps {
-                githubNotify account: 'sakshigawande12', context: 'build-status', credentialsId: '5f3f4be6-94a3-4991-8515-d8936cc4f147', description: 'passed', gitApiUrl: '', repo: 'HelloWorld', sha: "${GIT_COMMIT}", status: 'SUCCESS', targetUrl: ''
-            }
-     }
+     sh label: '', script: '''curl "https://api.GitHub.com/repos/sakshigawande12/HelloWorld/statuses/$GIT_COMMIT?access_token=saksH@123" \\
+  -H "Content-Type: application/json" \\
+  -X POST \\
+  -d "{\\"state\\": \\"success\\",\\"context\\": \\"continuous-integration/jenkins\\", \\"description\\": \\"Jenkins\\", \\"target_url\\": \\"http://104.154.65.36:8080/job/mul-2-hello/$BUILD_NUMBER/console\\"}"'''
     }
+   }
+ }
+post {
+  success{
+           githubNotify account: 'sakshigawande12', context: 'build-status', credentialsId: '5f3f4be6-94a3-4991-8515-d8936cc4f147', description: 'passed', gitApiUrl: '', repo: 'HelloWorld', sha: "${GIT_COMMIT}", status: 'SUCCESS', targetUrl: 'http://104.154.65.36:8080'
+          }
+     }
 }
