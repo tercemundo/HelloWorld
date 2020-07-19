@@ -28,7 +28,6 @@ pipeline {
                 sh "sbt run"
             }
         }
-<<<<<<< HEAD
 
        stage('Deploy to test'){
     steps {
@@ -38,11 +37,8 @@ pipeline {
          }
        } 
     }
-     stage('Build status') {
-=======
      
      stage('B1') {
->>>>>>> 94b18c893ad9cf80ed4c61bf35f7d754045c8021
             steps {
      sh label: '', script: '''curl "https://api.GitHub.com/repos/sakshigawande12/HelloWorld/statuses/$GIT_COMMIT?access_token=saksH@123" \\
   -H "Content-Type: application/json" \\
