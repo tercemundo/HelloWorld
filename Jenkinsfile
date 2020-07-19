@@ -33,7 +33,7 @@ pipeline {
     steps {
         dir('deployment'){ //do this in the deployment directory!
             echo 'Deploying to test'
-            sh 'ansible-playbook -i /etc/ansible/hosts main.yml'
+            sh 'ansible-playbook -i /etc/ansible/hosts /etc/ansible/main.yml'
          }
        } 
     }
