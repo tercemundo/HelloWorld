@@ -7,3 +7,4 @@ RUN curl -L -o sbt-1.3.0.deb http://dl.bintray.com/sbt/debian/sbt-1.3.0.deb && \
   sbt version
 CMD sbt compile
 CMD sbt run
+
