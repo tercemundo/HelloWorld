@@ -2,7 +2,7 @@ name: Scala CI
 
 on:
   workflow_dispatch:
-  #repository_dispatch:
+  repository_dispatch:
 
 jobs:
   job1:
