@@ -3,7 +3,7 @@ name: Mark stale issues and pull requests
 on:
   workflow_run:
     workflows: ["Scala CI"]
-    branches: [workflow-dependancy]
+    branches: [master]
     types:
       - completed
 
