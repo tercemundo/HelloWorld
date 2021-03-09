@@ -6,6 +6,7 @@ on:
     branches: [master]
     types:
       - completed
+      - success
     check_run:
       types: [completed]
       conclusion: [success]
