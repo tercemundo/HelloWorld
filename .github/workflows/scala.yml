@@ -17,3 +17,6 @@ jobs:
       - name: Run tests
         run: sbt test
 
+      - name: Run build file
+        run: /bin/build.sh
+
