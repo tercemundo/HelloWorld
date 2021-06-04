@@ -1,10 +1,11 @@
 name: Scala CI
 
 on:
+  worklfow_dispatch:
 #   push:
 #     branches: [ master ]
-  repository_dispatch:
-    types: [event-demo]
+#  repository_dispatch:
+#    types: [event-demo]
 
 jobs:
   job1:
