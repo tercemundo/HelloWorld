@@ -1,8 +1,10 @@
 name: Scala CI
 
 on:
-  push:
-    branches: [ master ]
+#   push:
+#     branches: [ master ]
+  repository_dispatch:
+    types: [event-demo]
 
 jobs:
   job1:
