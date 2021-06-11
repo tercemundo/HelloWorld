@@ -1,6 +1,8 @@
 name: Scala CI
 
 on:
+  repository_dispatch:
+    types: [event-demo]
 #  workflow_dispatch:
 #    inputs:
 #      repo:
@@ -11,8 +13,6 @@ on:
 #        required: true
 #   push:
 #     branches: [ master ]
-  repository_dispatch:
-    types: [event-demo]
 
 jobs:
   job1:
