@@ -1,7 +1,7 @@
 name: Scala CI
 
 on:
-  worklfow_dispatch:
+  workflow_dispatch:
     repo:
       description: 'repo_name'
       required: true
