@@ -1,19 +1,18 @@
 name: Scala CI
 
 on:
-  repository_dispatch:
-    types: [event-demo]
-    customField : customField
-#  workflow_dispatch:
-#    inputs:
-#      repo:
-#        description: 'repo_name'
-#        required: true
-#      branch:
-#        description: 'repo_branch'
-#        required: true
-#   push:
-#     branches: [ master ]
+#  repository_dispatch:
+#    types: [event-demo]
+  workflow_dispatch:
+    inputs:
+      repo:
+        description: 'repo_name'
+        required: true
+      branch:
+        description: 'repo_branch'
+        required: true
+   push:
+     branches: [ master ]
 
 jobs:
   job1:
