@@ -5,11 +5,9 @@ on:
     repo:
       description: 'repo_name'
       required: true
-      default: 'dummy'
     branch:
       description: 'repo_branch'
       required: true
-      default: 'dummy'
 #   push:
 #     branches: [ master ]
 #  repository_dispatch:
