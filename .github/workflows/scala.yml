@@ -3,6 +3,7 @@ name: Scala CI
 on:
   repository_dispatch:
     types: [event-demo]
+    repo: repo
 #  workflow_dispatch:
 #    inputs:
 #      repo:
