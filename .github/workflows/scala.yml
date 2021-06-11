@@ -2,6 +2,14 @@ name: Scala CI
 
 on:
   worklfow_dispatch:
+    repo:
+      description: 'repo_name'
+      required: true
+      default: 'dummy'
+      branch:
+        description: 'repo_branch'
+        required: true
+        default: 'dummy'
 #   push:
 #     branches: [ master ]
 #  repository_dispatch:
@@ -13,6 +21,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+
+      - run: |
+          echo "Hello ${{ github.event.inputs.repo }}!"
+          echo "- in ${{ github.event.inputs.branch }}!"
+
       - name: Set up JDK 1.8
         uses: actions/setup-java@v1
         with:
