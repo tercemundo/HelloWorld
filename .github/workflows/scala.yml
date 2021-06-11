@@ -2,12 +2,13 @@ name: Scala CI
 
 on:
   workflow_dispatch:
-    repo:
-      description: 'repo_name'
-      required: true
-    branch:
-      description: 'repo_branch'
-      required: true
+    inputs:
+      repo:
+        description: 'repo_name'
+        required: true
+      branch:
+        description: 'repo_branch'
+        required: true
 #   push:
 #     branches: [ master ]
 #  repository_dispatch:
