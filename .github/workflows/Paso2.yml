@@ -7,7 +7,7 @@ jobs:
   greet:
     runs-on: ubuntu-latest
     steps:
-    - name: Send greeting
+    - name: Mandando un Saludo
       run: echo "Hello Marce"
-    - name: Do Something Based On Triggered Event Data
+    - name: Mando algo que se pase por argumento
       run: 'echo "Pase por argumento: ${{ github.event.client_payload.text }}"'
