@@ -2,7 +2,7 @@ name: QQ
 
 on:
   repository_dispatch:
-    types: [hello]
+    types: [accion]
 jobs:
   greet:
     runs-on: ubuntu-latest
