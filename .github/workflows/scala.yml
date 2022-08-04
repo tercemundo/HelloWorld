@@ -1,56 +1,13 @@
-name: Scala CI
+name: Paso2
 
 on:
-#  repository_dispatch:
-#    types: [event-demo]
-  workflow_dispatch:
-    inputs:
-      repo:
-        description: 'repo_name'
-        required: true
-      branch:
-        description: 'repo_branch'
-        required: true
-    push:
-      branches: [ master ]
-
+  repository_dispatch:
+    types: [hello]
 jobs:
-  job1:
-    name: build
+  greet:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-
-#      - run: |
-#          echo "Hello ${{ github.event.inputs.repo }}!"
-#          echo "- in ${{ github.event.inputs.branch }}!"
-      - run: |
-          echo "hello $customField"
-
-      - name: Set up JDK 1.8
-        uses: actions/setup-java@v1
-        with:
-          java-version: 1.8
-      - name: Run tests
-        run: sbt test
-        
-      - name: Create artifact
-        run: sbt package
-      
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v1
-
-      - name: Login to DockerHub
-        uses: docker/login-action@v1
-        with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_PASSWORD }}
-
-      - name: Build and push docker image
-        uses: docker/build-push-action@v2
-        with:
-          context: .
-          file: ./Dockerfile
-          push: true
-          tags: sakshigawande12/hello-world:latest
-
+    - name: Send greeting
+      run: echo "Hello Marce"
+    - name: Do Something Based On Triggered Event Data
+      run: 'echo "Pase por argumento: ${{ github.event.client_payload.text }}"'
